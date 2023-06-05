@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DeCompras</string>
+    <string name="Productos">Productos</string>
+    <string name="quienes_somos">Quienes Somos</string>
 </resources>

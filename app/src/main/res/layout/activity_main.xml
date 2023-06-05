@@ -27,7 +27,7 @@ tools:context=".MainActivity">
     android:id="@+id/button1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Productos"
+    android:text="@string/Productos"
     android:layout_below="@id/titleTextView"
     android:layout_marginTop="16dp"
     android:textStyle="bold"/>
@@ -39,7 +39,7 @@ tools:context=".MainActivity">
         android:layout_height="wrap_content"
         android:layout_below="@id/button1"
         android:layout_marginTop="16dp"
-        android:text="Quienes Somos"
+        android:text="@string/quienes_somos"
         android:textStyle="bold"/>
 
     <!-- Agrega la imagen -->
