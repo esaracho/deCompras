@@ -3,4 +3,7 @@
     <string name="Productos">Productos</string>
     <string name="quienes_somos">Quienes Somos</string>
     <string name="decompras">DeCompras</string>
+    <string name="prueba_rama">Prueba rama</string>
+    <string name="main">Main</string>
+    <string name="esta_es_una_breve_descripci_n_sobre_nosotros">Esta es una breve descripción sobre nosotros.</string>
 </resources>
