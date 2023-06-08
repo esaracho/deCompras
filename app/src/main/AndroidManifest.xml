@@ -24,7 +24,13 @@
         <activity
             android:name=".quienesSomos"
             android:label="Quienes Somos" />
-
+        <activity
+            android:name=".listaProductos"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".carroCompras"
+            android:label="Carro de Compras" />
     </application>
 
 </manifest>
