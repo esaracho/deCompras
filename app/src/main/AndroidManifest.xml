@@ -21,16 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".quienesSomos"
             android:label="Quienes Somos" />
+
         <activity
             android:name=".listaProductos"
-            android:exported="true">
-        </activity>
+            android:exported="true"
+            android:label="Productos"/>
+
         <activity
             android:name=".carroCompras"
             android:label="Carro de Compras" />
+
     </application>
 
 </manifest>
