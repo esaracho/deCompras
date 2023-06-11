@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 public class ProductosSQLiteHelper extends SQLiteOpenHelper  {
 
-    String sqlCreate = "CREATE TABLE Productos (codigo INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, precio REAL)";
+    String sqlCreate = "CREATE TABLE Productos ( _id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, precio REAL)";
 
     public ProductosSQLiteHelper(Context contexto, String nombre,
                                  SQLiteDatabase.CursorFactory factory, int version) {
@@ -28,7 +28,7 @@ public class ProductosSQLiteHelper extends SQLiteOpenHelper  {
 // tabla antigua a la nueva, por lo que este método debería
 // ser más elaborado.
 //Se elimina la versión anterior de la tabla
-        db.execSQL("DROP TABLE IF EXISTS Usuarios");
+        db.execSQL("DROP TABLE IF EXISTS Productos");
 //Se crea la nueva versión de la tabla
         db.execSQL(sqlCreate);
     }
