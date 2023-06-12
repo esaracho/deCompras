@@ -30,7 +30,8 @@ tools:context=".MainActivity">
     android:text="@string/Productos"
     android:layout_below="@id/titleTextView"
     android:layout_marginTop="16dp"
-    android:textStyle="bold"/>
+    android:textStyle="bold" />
+
 
 <!-- Agrega el segundo botón -->
     <Button
@@ -41,6 +42,7 @@ tools:context=".MainActivity">
         android:layout_marginTop="16dp"
         android:text="@string/quienes_somos"
         android:textStyle="bold"/>
+
 
     <!-- Agrega la imagen -->
     <ImageView
