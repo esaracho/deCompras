@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, listaProductos.class);
+                Intent intent = new Intent(MainActivity.this, carroCompras.class);
                 startActivity(intent);
             }
         });

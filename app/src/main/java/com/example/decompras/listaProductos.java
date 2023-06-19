@@ -1,21 +1,24 @@
 package com.example.decompras;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 public class listaProductos extends ListActivity {
 
     ProductosSQLiteHelper baseD =
             new ProductosSQLiteHelper(this, "BDProductos", null, 5);
+
+    public static final String EXTRA_PRODUCTO =
+            "com.example.mensajeactividades.extra.PRODUCTO";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,18 +53,6 @@ public class listaProductos extends ListActivity {
 
     }
 
-    /*@Override
-    protected void onResume() {
-        super.onResume();
-        consultar();
-    }*/
-
-    /*@Override
-    protected void onDestroy() {
-        baseD.close();
-        super.onDestroy();
-    }*/
-
 
     @SuppressWarnings("deprecation")
     private void consultar() {
@@ -79,12 +70,11 @@ public class listaProductos extends ListActivity {
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 R.layout.fila_producto,
-                //android.R.layout.simple_list_item_2,
                 cursor,
                 columnas,
                 to);
 
-        ListView lista = (ListView) findViewById(android.R.id.list);
+        ListView lista = findViewById(android.R.id.list);
         lista.setAdapter(adapter);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,9 +85,14 @@ public class listaProductos extends ListActivity {
 
                 Cursor cursor = (Cursor) lista.getItemAtPosition(position);
 
-                String producto = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
-
-                Log.i("Hello!", producto);
+                Intent replyIntent = new Intent();
+                String[] producto = new String[2];
+                producto[0] = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+                producto[1] = cursor.getString(cursor.getColumnIndexOrThrow("precio"));
+                
+                replyIntent.putExtra(EXTRA_PRODUCTO, producto);
+                setResult(RESULT_OK,replyIntent);
+                finish ();
 
             }
         });
