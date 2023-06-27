@@ -39,6 +39,7 @@ public class carroCompras extends AppCompatActivity {
 
         Intent intent = new Intent(this, listaProductos.class);
 
+        //El botón lanza la activity listaProducto
         boton_producto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +61,7 @@ public class carroCompras extends AppCompatActivity {
 
     }
 
+    // Se genera el objeto para manejar la respuesta del activity listaProducto
     ActivityResultLauncher<Intent> respuesta = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -69,6 +71,7 @@ public class carroCompras extends AppCompatActivity {
                     if (result.getResultCode() == Activity.RESULT_OK) {
 
                         assert result.getData() != null;
+                        //Se guarda el resultado del intent
                         Bundle extras = result.getData().getExtras();
                         String[] producto = extras.getStringArray(listaProductos.EXTRA_PRODUCTO);
                         String nombre = producto[0];
@@ -76,6 +79,7 @@ public class carroCompras extends AppCompatActivity {
 
                         precio_total += Float.parseFloat(precio);
 
+                        //Se genera fila de la tabla
                         TableLayout tablaProducto = findViewById(R.id.tabla_carro);
                         TableRow totalRow = findViewById(R.id.total);
                         TableRow tablarow = new TableRow(carroCompras.this);
@@ -103,8 +107,9 @@ public class carroCompras extends AppCompatActivity {
                         totalRow.setPadding(0,20,0,20);
                         totalRow.setBackgroundResource(R.color.azul_oscuro);
 
+                        //Se inserta fila de suma total
                         sumTotal(totalRow);
-
+                        //Se inserta fila de la tabla
                         tablaProducto.addView(tablarow, tablaProducto.getChildCount() - 1);
 
 

@@ -32,6 +32,7 @@ public class listaProductos extends ListActivity {
 
         float[] precios = {1050.50f, 1000f, 3400.50f, 600f, 300f, 2300.50f, 3500.75f, 750f, 450.75f, 4650f };
 
+        //Se verifica que la tabla esté vacía
         Cursor cur = db.rawQuery("SELECT COUNT(*) FROM Productos", null);
         if (cur != null) {
             cur.moveToFirst();
@@ -64,8 +65,10 @@ public class listaProductos extends ListActivity {
         String[] campos = new String[] {"_id","nombre","precio"};
         Cursor cursor = db.query("Productos", campos, null , null, null, null, null);
 
+        //Se genera el adapter para generar la vista de la lista de productos
         String[] columnas = new String[] { "nombre", "precio" };
         //int[] to = new int[] { android.R.id.text1, android.R.id.text2 };
+        //Donde va a insertar los datos en la vista
         int[] to = new int[] { R.id.producto_nombre, R.id.producto_precio };
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
@@ -85,11 +88,13 @@ public class listaProductos extends ListActivity {
 
                 Cursor cursor = (Cursor) lista.getItemAtPosition(position);
 
+                //Se genera el intent de respuesta a carroCompras
                 Intent replyIntent = new Intent();
                 String[] producto = new String[2];
                 producto[0] = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
                 producto[1] = cursor.getString(cursor.getColumnIndexOrThrow("precio"));
-                
+
+                //Se devuelve respuesta a carroCompras
                 replyIntent.putExtra(EXTRA_PRODUCTO, producto);
                 setResult(RESULT_OK,replyIntent);
                 finish ();
